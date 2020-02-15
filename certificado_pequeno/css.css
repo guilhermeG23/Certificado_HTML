@@ -1,0 +1,71 @@
+.moldura {
+    width: 1000px !important;
+    height: 700px !important;
+    /*max-width: 750px;*/
+    border: 1px black solid;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+}
+.moldura-descricao {
+    width: 950px !important;
+    height: 650px !important;
+}
+.cor-verde-escuro {
+    background: #088A08;
+}
+.cor-verde-claro {
+    background: #01DF01;
+}
+.bloco {
+    width: 160px !important;
+    height: 100px !important;
+}
+.bloco-interno {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+}
+.bloco-minimizado {
+    max-width: 100px;
+}
+.bloco-assinatura {
+        vertical-align: text-top;
+        padding-top: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+}
+.margin-elementos {
+    margin: 20px;
+}
+.margin-elementos th {
+    margin: 20px;
+}
+.titulo {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0px !important;
+    margin-bottom: 10px !important;
+}
+.texto-nome {
+    font-size: 36px; 
+}
+.texto {
+    font-size: 28px; 
+    text-align: justify;
+}
+.descricao {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.texto-assinatura {
+    font-size: 20px;
+    margin: 0px !important;
+    margin-bottom: 10px !important;
+}
+.imagem {
+    width: 80%;
+    margin: auto;
+}
