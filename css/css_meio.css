@@ -1,16 +1,20 @@
 .moldura {
-    width: 1000px !important;
-    height: 700px !important;
+    width: 100% !important;
+    height: 800px !important;
     /*max-width: 750px;*/
     border: 1px black solid;
     border-radius: 5px;
     text-align: center;
     margin: auto;
-    padding: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .moldura-descricao {
     width: 950px !important;
     height: 650px !important;
+    margin: auto;
+    margin-top: 90px;
+    margin-bottom: 90px;
 }
 .cor-verde-escuro {
     background: #088A08;
@@ -64,6 +68,9 @@
     font-size: 20px;
     margin: 0px !important;
     margin-bottom: 10px !important;
+}
+.centro {
+	text-align: center;
 }
 .imagem {
     width: 80%;

@@ -6,11 +6,14 @@
     border-radius: 5px;
     text-align: center;
     margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: auto;
 }
 .moldura-descricao {
-    width: 100% !important;
-    height: 800px !important;
+    width: 99% !important;
+    height: 750px !important;
+    margin-right: 18px !important;
 }
 .cor-verde-escuro {
     background: #088A08;
@@ -64,6 +67,9 @@
     font-size: 20px;
     margin: 0px !important;
     margin-bottom: 10px !important;
+}
+.centro {
+	text-align: center;
 }
 .imagem {
     width: 80%;
