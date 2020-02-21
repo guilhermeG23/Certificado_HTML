@@ -12,8 +12,9 @@
 }
 .moldura-descricao {
     width: 99% !important;
-    height: 750px !important;
-    margin-right: 18px !important;
+    height: 785px !important;
+    margin: auto !important;
+    margin-right: 13px !important;
 }
 .cor-verde-escuro {
     background: #088A08;
@@ -34,11 +35,11 @@
     max-width: 100px;
 }
 .bloco-assinatura {
-        vertical-align: text-top;
-        padding-top: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 5px;
+    vertical-align: text-top;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
 }
 .margin-elementos {
     margin: 20px;
@@ -58,6 +59,8 @@
 .texto {
     font-size: 28px; 
     text-align: justify;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 .descricao {
     padding-right: 20px;

@@ -4,17 +4,30 @@ function limpaSpaces($entrada) {
 	return preg_replace("/\s+/", "_", $entrada);
 }
 
+function tratamentoDatas($entrada) {
+	return preg_replace('/[^0-9]/', '', $entrada);
+}
+
+function arrumaPalavra($entrada) {
+	return preg_replace("/[^a-zA-Z0-9]/", "_", $entrada);
+}
+
 $orientacao = $_POST["orientacao"];
 
+$treinamento = limpaSpaces($_POST["treinamento"]);
 $RC = $_POST["contador_responsavel"];
 $CF = $_POST["contador_funcionario"];
 $CC = $_POST["contador_curso"];
 
-$treinamento = limpaSpaces($_POST["treinamento"]);
-$DI = $_POST["data_inicial"];
-$DF = $_POST["data_final"];
-$DE = $_POST["data_emissao"];
+$DI = tratamentoDatas($_POST["data_inicial"]);
+$DF = tratamentoDatas($_POST["data_final"]);
+$DE = tratamentoDatas($_POST["data_emissao"]);
 $horas = $_POST["horas"];
+
+
+if ($DF === "") {
+	$DF = 0;
+}
 
 $array_responsaveis = "";
 for ($i = 0; $i != $RC; $i++) {
@@ -48,7 +61,16 @@ for ($i = 0; $i != $CC; $i++) {
 	}
 }
 
-shell_exec("python3 teste.py $treinamento $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos $orientacao $DE");
 
-#header("Location: index.php");
+
+$arquivo = arrumaPalavra(limpaSpaces($_POST['arquivo'])) . ".pdf";
+if ($orientacao == "0") {
+	shell_exec("python3 certificadoMeio.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
+	shell_exec("cp -r pdf.pdf $arquivo");
+} elseif ($orientacao == "1") {
+	shell_exec("python3 certificadoA4.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
+	shell_exec("cp -r saida.pdf $arquivo");
+}
+
+header("Location: index.php");
 die();
