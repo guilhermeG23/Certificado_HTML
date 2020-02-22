@@ -1,4 +1,5 @@
 import pdfkit 
+import codecs
 import sys
 import re
 
@@ -53,7 +54,7 @@ cursos = sys.argv[8].split(',')
 
 #Parte certificado
 #-----------------------------------------------
-arquivo = open("certificado.html", "w", encoding='utf-8')
+arquivo = codecs.open("certificado.html", "w", encoding='utf-8')
 
 arquivo.write("<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='pdfkit-page-size' content='A4'/><meta name='pdfkit-orientation' content='Landscape'/><link rel='stylesheet' type='text/css' href='./css/css_meio.css'></head><body>")
 for c in range(len(funcionarios)-1, -1, -2):
@@ -120,7 +121,7 @@ for c in range(len(funcionarios)-1, -1, -2):
     for i in range(c, c-2, -1):
         if i != int(-1):
             arquivo.write("<div class='moldura moldura-descricao'><br><p class='titulo'>Conteúdo programático</p><br><ul class='texto'>")
-            for k in range(len(cursos)-1, -1, -1):
+            for k in range(0, len(cursos)):
                 arquivo.write("<li>")
                 arquivo.write(renameSpaces(cursos[k]).capitalize())
                 arquivo.write("</li>")

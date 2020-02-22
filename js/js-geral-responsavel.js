@@ -26,6 +26,10 @@ function duplicarCamposResponsavel(){
 	document.getElementById("nome_responsavel" + incrementadorResponsavel + "").name = "nome_responsavel" + incrementadorResponsavel + "";
 	document.getElementById("descricao_responsavel" + incrementadorResponsavel + "").name = "descricao_responsavel" + incrementadorResponsavel + "";
 	
+	//Requireds	
+	document.getElementById("nome_responsavel" + incrementadorResponsavel + "").setAttribute('required', 'yes');
+	document.getElementById("descricao_responsavel" + incrementadorResponsavel + "").setAttribute('required', 'yes');
+	
 	//Incrementar
 	incrementadorResponsavel++;
 

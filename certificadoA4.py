@@ -60,7 +60,7 @@ for c in range(len(funcionarios)-1, -1, -1):
     arquivo.write("<table class='moldura'><tr><th class='bloco'></th><th class='bloco'><div class='bloco-interno cor-verde-claro'></th><th class='bloco'><img class='imagem' src='/var/www/html/imagens/ramenzoni.png'></th><th class='bloco'><div class='bloco-interno cor-verde-claro'></th><th class='bloco'></th></tr><tr><th class='bloco'><div class='bloco-interno cor-verde-escuro'></th><th class='bloco' colspan='3'><p class='titulo'>CERTIFICADO</p><p class='titulo texto-nome'>")
     arquivo.write(renameSpaces(funcionarios[c]).title())
     arquivo.write("</p></th><th class='bloco'><div class='bloco-interno cor-verde-escuro'></th></tr><tr><td colspan='5'><p class='texto descricao'>É com satisfação que confiro-lhe o certificado, por sua participação no ")
-    arquivo.write(renameSpaces(treinamento).encode('UTF-8'))
+    arquivo.write(renameSpaces(treinamento))
     arquivo.write(" realizado ")
 
     if int(data_final) == 0:

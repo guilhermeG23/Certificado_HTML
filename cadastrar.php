@@ -9,7 +9,7 @@ function tratamentoDatas($entrada) {
 }
 
 function arrumaPalavra($entrada) {
-	return preg_replace("/[^a-zA-Z0-9]/", "_", $entrada);
+	return preg_replace("/[^a-zA-Z0-9á-úÁ-Ú]\s/", "_", $entrada);
 }
 
 $orientacao = $_POST["orientacao"];
@@ -31,12 +31,12 @@ if ($DF === "") {
 
 $array_responsaveis = "";
 for ($i = 0; $i != $RC; $i++) {
-	$NR =  "nome_responsavel" . $i;
+	$NR = "nome_responsavel" . $i;
 	$DR = "descricao_responsavel" . $i;
 	if ($i == 0) {
-		$array_responsaveis = limpaSpaces($_POST[$NR]) . "," . limpaSpaces($_POST[$DR]);
+		$array_responsaveis = limpaSpaces(arrumaPalavra($_POST[$NR])) . "," . limpaSpaces(arrumaPalavra($_POST[$DR]));
 	} else {
-		$array_responsaveis = $array_responsaveis . "," . limpaSpaces($_POST[$NR]) . "," . limpaSpaces($_POST[$DR]);
+		$array_responsaveis = $array_responsaveis . "," . limpaSpaces(arrumaPalavra($_POST[$NR])) . "," . limpaSpaces(arrumaPalavra($_POST[$DR]));
 	}
 }
 
@@ -44,26 +44,24 @@ $array_funcionarios = "";
 for ($i = 0; $i != $CF; $i++) {
 	$F =  "funcionario" . $i;
 	if ($i == 0) {
-		$array_funcionarios = limpaSpaces($_POST[$F]);
+		$array_funcionarios = limpaSpaces(arrumaPalavra($_POST[$F]));
 	} else {
-		$array_funcionarios = $array_funcionarios . "," . limpaSpaces($_POST[$F]);
+		$array_funcionarios = $array_funcionarios . "," . limpaSpaces(arrumaPalavra($_POST[$F]));
 	}
 }
 
 $array_cursos = "";
 for ($i = 0; $i != $CC; $i++) {
 	$C =  "curso" . $i;
-	#$array_cursos = limpaSpaces($_POST[$C]) . "," . $array_cursos;
 	if ($i == 0) {
-		$array_cursos = limpaSpaces($_POST[$C]);
+		$array_cursos = limpaSpaces(arrumaPalavra($_POST[$C]));
 	} else {
-		$array_cursos = $array_cursos . "," . limpaSpaces($_POST[$C]);
+		$array_cursos = $array_cursos . "," . limpaSpaces(arrumaPalavra($_POST[$C]));
 	}
 }
 
-
-
 $arquivo = arrumaPalavra(limpaSpaces($_POST['arquivo'])) . ".pdf";
+
 if ($orientacao == "0") {
 	shell_exec("python3 certificadoMeio.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
 	shell_exec("cp -r pdf.pdf $arquivo");

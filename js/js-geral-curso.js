@@ -19,6 +19,9 @@ function duplicarCamposCurso(){
 	//Alterando os responsavels dos campos
 	document.getElementById("curso" + incrementadorCurso + "").name = "curso" + incrementadorCurso + "";
 	
+	//Required
+	document.getElementById("curso" + incrementadorCurso + "").setAttribute('required', 'yes');
+	
 	//Incrementar
 	incrementadorCurso++;
 

@@ -19,6 +19,9 @@ function duplicarCamposFuncionario(){
 	//Alterando os responsavels dos campos
 	document.getElementById("funcionario" + incrementadorFuncionario + "").name = "funcionario" + incrementadorFuncionario + "";
 	
+	//Dando required
+	document.getElementById("funcionario" + incrementadorFuncionario + "").setAttribute('required', 'yes');
+	
 	//Incrementar
 	incrementadorFuncionario++;
 

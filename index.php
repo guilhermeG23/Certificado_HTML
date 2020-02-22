@@ -6,7 +6,7 @@
 </head>
 <body>
 <!--Entrada de registros de notas em modal-->
-<form action="cadastrar.php" method="POST" enctype="multipart/form-data">
+<form action="cadastrar.php" method="POST">
 <div class="moldura-certificados" id="registrar_computador" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="" role="document">
 		<div class="modal-content">
@@ -20,12 +20,12 @@
 						<table class="table">
 							<tr>
 								<td><label class="col-form-label">Nome do arquivo: </label></td>
-								<td colspan="6"><input type="text" class="form-control" value="" id="arquivo" name="arquivo" maxlength="100" placeholder="Ex: Nome do arquivo..." autocomplete="off" ></td>
+								<td colspan="6"><input type="text" class="form-control" value="" id="arquivo" name="arquivo" maxlength="100" placeholder="Ex: Nome do arquivo..." autocomplete="off" required></td>
 							<tr>
-								<td><label class="col-form-label">Orientacao do papel: </label></td>
+								<td><label class="col-form-label">Orientacao do papel(por padrão vai gerar meia folha): </label></td>
 								<td colspan="6">
-									<select id="orientacao" name="orientacao">
-										<option value="">...</option>
+									<select id="orientacao" name="orientacao" class="form-control"> 
+										<option value="0">...</option>
 										<option value="0">Meia folha</option>
 										<option value="1">A4</option>
 									</select>
@@ -33,15 +33,15 @@
 							</tr>
 							<tr>
 								<td><label class="col-form-label">Treinamento: </label></td>
-								<td colspan="6"><input type="text" class="form-control" value="" id="treinamento" name="treinamento" maxlength="100" placeholder="Ex: Treinamento..." autocomplete="off" ></td>
+								<td colspan="6"><input type="text" class="form-control" value="" id="treinamento" name="treinamento" maxlength="100" placeholder="Ex: Treinamento..." autocomplete="off" required></td>
 							</tr>
 							<tr>
 								<td><label class="col-form-label">Data emissao certificado: </label></td>
-								<td colspan="6"><input type="text" class="form-control data" value="" id="data_emissao" name="data_emissao" placeholder="EX: dd/mm/yyyy" autocomplete="off"></td>
+								<td colspan="6"><input type="text" class="form-control data" value="" id="data_emissao" name="data_emissao" placeholder="EX: dd/mm/yyyy" autocomplete="off" required></td>
 							</tr>
 							<tr>
 								<td><label class="col-form-label">Data inicio curso: </label></td>
-								<td colspan="6"><input type="text" class="form-control data" value="" id="data_inicial" name="data_inicial" placeholder="EX: dd/mm/yyyy" autocomplete="off"></td>
+								<td colspan="6"><input type="text" class="form-control data" value="" id="data_inicial" name="data_inicial" placeholder="EX: dd/mm/yyyy" autocomplete="off" required></td>
 							</tr>
 							<tr>
 								<td><label class="col-form-label">Data fim curso: </label></td>
@@ -49,7 +49,7 @@
 							</tr>
 							<tr>
 								<td><label class="col-form-label">Horas: </label></td>
-								<td colspan="2"><input type="text" class="form-control" value="" id="horas" name="horas" placeholder="EX: quantidade horas do curso/treinamento..." autocomplete="off" >		
+								<td colspan="2"><input type="text" class="form-control" value="" id="horas" name="horas" placeholder="EX: quantidade horas do curso/treinamento..." autocomplete="off" required>		
 							</tr>
 						</table>
 						<hr>
@@ -65,14 +65,14 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="text" class="form-control" value="" id="nome_responsavel0" name="nome_responsavel0" maxlength="54" placeholder="Ex: responsavel pelo curso/treinamento" autocomplete="off"></td>
-								<td colspan="3"><input type="text" class="form-control" value="" id="descricao_responsavel0" name="descricao_responsavel0" maxlength="100" placeholder="Ex: descricao do profissional" autocomplete="off" ></td>
+								<td colspan="2"><input type="text" class="form-control" value="" id="nome_responsavel0" name="nome_responsavel0" maxlength="54" placeholder="Ex: responsavel pelo curso/treinamento" autocomplete="off" required></td>
+								<td colspan="3"><input type="text" class="form-control" value="" id="descricao_responsavel0" name="descricao_responsavel0" maxlength="100" placeholder="Ex: descricao do profissional" autocomplete="off" required></td>
 							</tr>
 						</table>
 						<table style="display: none;">
 							<tr id="clonar_responsavel">
-								<td colspan="2"><input type="text" class="form-control" value="" id="nome_responsavel" name="nome_responsavel0" maxlength="54" placeholder="Ex: responsavel pelo curso/treinamento" autocomplete="off"></td>
-								<td colspan="3"><input type="text" class="form-control" value="" id="descricao_responsavel" name="descricao_responsavel0" maxlength="100" placeholder="Ex: descricao do profissional" autocomplete="off" ></td>
+								<td colspan="2"><input type="text" class="form-control" value="" id="nome_responsavel" name="nome_responsavel" maxlength="54" placeholder="Ex: responsavel pelo curso/treinamento" autocomplete="off"></td>
+								<td colspan="3"><input type="text" class="form-control" value="" id="descricao_responsavel" name="descricao_responsavel" maxlength="100" placeholder="Ex: descricao do profissional" autocomplete="off"></td>
 							</tr>
 						</table>
 
@@ -80,19 +80,18 @@
 							<tr>
 								<td colspan="4"><label class="col-form-label">Funcionario: </label></td>
 								<td colspan="1" class="alinhar-direita">
-									<!--Botoes com js para criar e deletar campos-->
 									<button type="button" class="btn btn-success" style="cursor: pointer;" onclick="duplicarCamposFuncionario();">Novo campo</button>
 									<button type="button" class="btn btn-warning" style="cursor: pointer;" onclick="removerCamposFuncionario();">Apagar ultimo campo</button>
 									<button type="button" class="btn btn-danger" style="cursor: pointer;" onclick="allremoverCamposFuncionario();">Delete todos os campos extras</button>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="5"><input type="text" class="form-control" value="" id="funcionario0" name="funcionario0" maxlength="54" placeholder="Ex: nome do funcionario" autocomplete="off"></td>
+								<td colspan="5"><input type="text" class="form-control" value="" id="funcionario0" name="funcionario0" maxlength="54" placeholder="Ex: nome do funcionario" autocomplete="off" required></td>
 							</tr>
 						</table>
 						<table style="display: none;">
 							<tr id="clonar_funcionario">
-								<td><input type="text" class="form-control" value="" id="funcionario" name="funcionario" maxlength="54" placeholder="Ex: nome do funcionario" autocomplete="off"></td>
+								<td colspan="5"><input type="text" class="form-control" value="" id="funcionario" name="funcionario" maxlength="54" placeholder="Ex: nome do funcionario" autocomplete="off"></td>
 							</tr>
 						</table>
 
@@ -108,12 +107,12 @@
 
 							</tr>
 							<tr>
-								<td colspan="5"><input type="text" class="form-control" value="" id="curso0" name="curso0" maxlength="54" placeholder="Ex: tópicos do curso" autocomplete="off"></td>
+								<td colspan="5"><input type="text" class="form-control" value="" id="curso0" name="curso0" maxlength="54" placeholder="Ex: tópicos do curso" autocomplete="off" required></td>
 							</tr>
 						</table>
 						<table style="display: none;">
 							<tr id="clonar_curso">
-								<td><input type="text" class="form-control" value="" id="curso" name="curso" maxlength="54" placeholder="Ex: tópicos do curso" autocomplete="off"></td>
+								<td colspan="5"><input type="text" class="form-control" value="" id="curso" name="curso" maxlength="54" placeholder="Ex: tópicos do curso" autocomplete="off"></td>
 							</tr>
 						</table>
 
@@ -129,11 +128,15 @@
 </div>
 </form>
 
+<h1>Arquivos listados</h1>
+<br>
+
 <table class="table">
 	<thead class="thead-dark">
 		<tr>
 			<th>Nome do arquivo</th>
-			<th>PDF</th>
+			<th>Downaload</th>
+			<th>Deletar</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -146,6 +149,7 @@
 				echo "<tr>
 					<th>{$arquivo}</th>
 					<th><a href='{$arquivo}' download>{$arquivo}</a></th>
+					<th><a href='limpar.php?arquivo={$arquivo}' download>{$arquivo}</a></th>
 				</tr>";
 			}
 		} 
