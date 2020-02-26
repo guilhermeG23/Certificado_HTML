@@ -1,10 +1,11 @@
 import pdfkit 
-import codecs
 import sys
 import re
 
 def renameSpaces(entrada):
-    return re.sub("_", " ", entrada)
+    entrada = entrada.encode('utf-8', errors='surrogateescape').decode('utf-8')
+    entrada = re.sub("_", " ", entrada)
+    return entrada
 
 def ajusteDatas(data):
     valor = data 
@@ -42,7 +43,6 @@ def ajusteDatas(data):
 
     return "{} de {} de {}".format(valor[0:2], mes, valor[4:8])
 
-
 treinamento = sys.argv[1]
 data_emissao = sys.argv[2]
 data_inicial = sys.argv[3]
@@ -54,9 +54,9 @@ cursos = sys.argv[8].split(',')
 
 #Parte certificado
 #-----------------------------------------------
-arquivo = codecs.open("certificado.html", "w", encoding='utf-8')
+arquivo = open("certificado.html", "w", encoding="utf-8")
 
-arquivo.write("<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='pdfkit-page-size' content='A4'/><meta name='pdfkit-orientation' content='Landscape'/><link rel='stylesheet' type='text/css' href='./css/css_meio.css'></head><body>")
+arquivo.write("<!DOCTYPE html><html><head><meta name='pdfkit-page-size' content='A4'/><meta name='pdfkit-orientation' content='Landscape'/><link rel='stylesheet' type='text/css' href='./css/css_meio.css'></head><body>")
 for c in range(len(funcionarios)-1, -1, -2):
     for i in range(c, c-2, -1):
         if i != int(-1):
@@ -142,7 +142,7 @@ options = {
     'margin-right': '0.75in',
     'margin-bottom': '0.75in',
     'margin-left': '0.75in',
-    'encoding': 'UTF-8',
+    'encoding': 'UTF-8'
 }
-pdfkit.from_file(array_arquivos, "pdf.pdf", options=options)
+pdfkit.from_file(array_arquivos, "pdf_tmp_9842389429.pdf", options=options)
 #-----------------------------------------------

@@ -24,7 +24,6 @@ $DF = tratamentoDatas($_POST["data_final"]);
 $DE = tratamentoDatas($_POST["data_emissao"]);
 $horas = $_POST["horas"];
 
-
 if ($DF === "") {
 	$DF = 0;
 }
@@ -46,7 +45,7 @@ for ($i = 0; $i != $CF; $i++) {
 	if ($i == 0) {
 		$array_funcionarios = limpaSpaces(arrumaPalavra($_POST[$F]));
 	} else {
-		$array_funcionarios = $array_funcionarios . "," . limpaSpaces(arrumaPalavra($_POST[$F]));
+		$array_funcionarios = $array_funcionarios . "," . converter(limpaSpaces(arrumaPalavra($_POST[$F])));
 	}
 }
 
@@ -63,11 +62,11 @@ for ($i = 0; $i != $CC; $i++) {
 $arquivo = arrumaPalavra(limpaSpaces($_POST['arquivo'])) . ".pdf";
 
 if ($orientacao == "0") {
-	shell_exec("python3 certificadoMeio.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
-	shell_exec("cp -r pdf.pdf $arquivo");
+	shell_exec("PYTHONIOENCODING=utf-8 python3 certificadoMeio.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
+	shell_exec("cp -r pdf_tmp_9842389429.pdf $arquivo");
 } elseif ($orientacao == "1") {
-	shell_exec("python3 certificadoA4.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
-	shell_exec("cp -r saida.pdf $arquivo");
+	shell_exec("PYTHONIOENCODING=utf-8 python3 certificadoA4.py $treinamento $DE $DI $DF $horas $array_responsaveis $array_funcionarios $array_cursos");
+	shell_exec("cp -r rotate_tmp_2398487239.pdf $arquivo");
 }
 
 header("Location: index.php");

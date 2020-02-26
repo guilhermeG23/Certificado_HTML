@@ -4,7 +4,9 @@ import re
 import PyPDF2
 
 def renameSpaces(entrada):
-    return re.sub("_", " ", entrada)
+    entrada = entrada.encode('utf-8', errors='surrogateescape').decode('utf-8')
+    entrada = re.sub("_", " ", entrada)
+    return entrada
 
 def ajusteDatas(data):
     valor = data 
@@ -137,9 +139,10 @@ options = {
     'encoding': 'UTF-8',
     'orientation': 'landscape' 
 }
-pdfkit.from_file(array_arquivos, "pdf.pdf", options=options)
 
-pdf_in = open('pdf.pdf', 'rb')
+pdfkit.from_file(array_arquivos, "pdf_tmp_rot_773248994973.pdf", options=options)
+
+pdf_in = open('pdf_tmp_rot_773248994973.pdf', 'rb')
 pdf_reader = PyPDF2.PdfFileReader(pdf_in)
 pdf_writer = PyPDF2.PdfFileWriter()
 
@@ -149,7 +152,7 @@ for pagenum in range(pdf_reader.numPages):
         page.rotateClockwise(180)
     pdf_writer.addPage(page)
 
-pdf_out = open('saida.pdf', 'wb')
+pdf_out = open('rotate_tmp_2398487239.pdf', 'wb')
 pdf_writer.write(pdf_out)
 pdf_out.close()
 pdf_in.close()

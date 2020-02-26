@@ -5,3 +5,9 @@ body {
 .moldura-certificados {
 	margin: 2% !important;
 }
+td.alinhar-direita {
+    text-align: right;
+}
+.img-table {
+	width: 32px !important;
+}

@@ -119,8 +119,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="reset" class="btn btn-warning">Limpar</button>
-					<button type="submit" class="btn btn-success">Registrar</button>
+					<button type="reset" class="btn btn-warning">Limpar campos</button>
+					<button type="submit" class="btn btn-success">Criar certificado's</button>
 				</div>
 			</div>
 		</div>
@@ -134,22 +134,24 @@
 <table class="table">
 	<thead class="thead-dark">
 		<tr>
-			<th>Nome do arquivo</th>
-			<th>Downaload</th>
-			<th>Deletar</th>
+			<th>Arquivos</th>
+			<th>Funções</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
 		$arquivos = glob("{*.pdf}", GLOB_BRACE);
 		foreach($arquivos as $arquivo) {
-			if ($arquivo == "pdf.pdf" || $arquivo == "saida.pdf") {
+			#Arquivos PDF base, para não mostrar aos usuarios
+			if ($arquivo == "pdf_tmp_9842389429.pdf" || $arquivo == "rotate_tmp_2398487239.pdf" || $arquivo == "pdf_tmp_rot_773248994973.pdf") {
 				continue;
 			} else {
 				echo "<tr>
 					<th>{$arquivo}</th>
-					<th><a href='{$arquivo}' download>{$arquivo}</a></th>
-					<th><a href='limpar.php?arquivo={$arquivo}' download>{$arquivo}</a></th>
+					<th>
+						<a href='{$arquivo}' download><img src='./imagens/download.png' class='img-table'/></a>
+						<a href='limpar.php?arquivo={$arquivo}'><img src='./imagens/deletar.png' class='img-table'/></a>
+					</th>
 				</tr>";
 			}
 		} 
